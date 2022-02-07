@@ -1,0 +1,6 @@
+ros-distro-mutex
+ros-noetic-gazebo-dev
+ros-noetic-gazebo-ros
+ros-noetic-hector-gazebo-plugins
+ros-noetic-gazebo-ros-control
+ros-noetic-gazebo-plugins
