@@ -1,0 +1,97 @@
+pool:
+  vmImage: macOS-11
+trigger:
+- buildbranch_osx_arm64
+pr: none
+stages:
+- stage: stage_0
+  jobs:
+  - job: stage_0_job_0
+    steps:
+    - script: |
+        export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        .scripts/build_osx_arm64.sh
+      env:
+        ANACONDA_API_TOKEN: $(ANACONDA_API_TOKEN)
+        CURRENT_RECIPES: ros-distro-mutex ros-noetic-catkin
+      displayName: Build ros-distro-mutex ros-noetic-catkin
+- stage: stage_1
+  jobs:
+  - job: stage_1_job_0
+    steps:
+    - script: |
+        export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        .scripts/build_osx_arm64.sh
+      env:
+        ANACONDA_API_TOKEN: $(ANACONDA_API_TOKEN)
+        CURRENT_RECIPES: ros-noetic-geometry-msgs ros-noetic-controller-manager ros-noetic-qt-gui-cpp
+          ros-noetic-eigenpy ros-noetic-joint-state-controller
+      displayName: Build ros-noetic-geometry-msgs ros-noetic-controller-manager ros-noetic-qt-gui-cpp
+        ros-noetic-eigenpy ros-noetic-joint-state-controller
+  - job: stage_1_job_1
+    steps:
+    - script: |
+        export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        .scripts/build_osx_arm64.sh
+      env:
+        ANACONDA_API_TOKEN: $(ANACONDA_API_TOKEN)
+        CURRENT_RECIPES: ros-noetic-joy ros-noetic-lms1xx ros-noetic-interactive-marker-twist-server
+          ros-noetic-rosserial-python ros-noetic-pointgrey-camera-description
+      displayName: Build ros-noetic-joy ros-noetic-lms1xx ros-noetic-interactive-marker-twist-server
+        ros-noetic-rosserial-python ros-noetic-pointgrey-camera-description
+  - job: stage_1_job_2
+    steps:
+    - script: |
+        export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        .scripts/build_osx_arm64.sh
+      env:
+        ANACONDA_API_TOKEN: $(ANACONDA_API_TOKEN)
+        CURRENT_RECIPES: ros-noetic-gmapping ros-noetic-robot ros-noetic-nmea-msgs
+          ros-noetic-perception ros-noetic-turtlebot3
+      displayName: Build ros-noetic-gmapping ros-noetic-robot ros-noetic-nmea-msgs
+        ros-noetic-perception ros-noetic-turtlebot3
+  - job: stage_1_job_3
+    steps:
+    - script: |
+        export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        .scripts/build_osx_arm64.sh
+      env:
+        ANACONDA_API_TOKEN: $(ANACONDA_API_TOKEN)
+        CURRENT_RECIPES: ros-noetic-rosserial-server ros-noetic-moveit
+      displayName: Build ros-noetic-rosserial-server ros-noetic-moveit
+- stage: stage_2
+  jobs:
+  - job: stage_2_job_0
+    steps:
+    - script: |
+        export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        .scripts/build_osx_arm64.sh
+      env:
+        ANACONDA_API_TOKEN: $(ANACONDA_API_TOKEN)
+        CURRENT_RECIPES: ros-noetic-rviz ros-noetic-diff-drive-controller ros-noetic-twist-mux
+          ros-noetic-teleop-twist-joy ros-noetic-robot-localization
+      displayName: Build ros-noetic-rviz ros-noetic-diff-drive-controller ros-noetic-twist-mux
+        ros-noetic-teleop-twist-joy ros-noetic-robot-localization
+  - job: stage_2_job_1
+    steps:
+    - script: |
+        export CI=azure
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        .scripts/build_osx_arm64.sh
+      env:
+        ANACONDA_API_TOKEN: $(ANACONDA_API_TOKEN)
+        CURRENT_RECIPES: ros-noetic-imu-filter-madgwick ros-noetic-desktop ros-noetic-nmea-navsat-driver
+      displayName: Build ros-noetic-imu-filter-madgwick ros-noetic-desktop ros-noetic-nmea-navsat-driver

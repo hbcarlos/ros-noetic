@@ -1,0 +1,68 @@
+ros_distro: noetic
+mutex_package: ros-distro-mutex 0.3 noetic
+
+# mapping for package keys
+conda_index:
+  - robostack.yaml
+  - packages-ignore.yaml
+
+build_number: 2
+
+# Ignore all dependencies of selected packages
+skip_all_deps: true
+
+# If full rebuild, the build number of the existing package has
+# to match the selected build number for skipping
+full_rebuild: true
+
+packages_skip_by_deps:
+
+packages_remove_from_deps:
+  - stage-ros
+  - stage
+  # sbcl is not available for osx-arm64
+  - roslisp
+
+skip_existing:
+  # - https://conda.anaconda.org/robostack/
+
+packages_select_by_deps:
+  ##
+  #  TODO OSX-ARM64
+  ##
+  - qt-gui-cpp  # needs manual build
+  - catkin
+  - robot
+  - rviz  # needs manual build
+  - desktop
+  - perception
+  - moveit
+  - eigenpy  # needs manual build
+  - turtlebot3
+  # - desktop-full  # missing gazebo
+
+  # For jackal
+  # - gazebo-dev  # missing gazebo
+  # - hector-gazebo-plugins  # missing gazebo
+  # - gazebo-ros  # missing gazebo
+  # - gazebo-ros-control  # missing gazebo
+  # - gazebo-plugins  # missing gazebo
+  - lms1xx
+  - controller-manager
+  - interactive_marker_twist_server
+  - diff-drive-controller
+  - joint-state-controller
+  - joy
+  - robot-localization
+  - teleop-twist-joy
+  - twist-mux
+  - pointgrey-camera-description
+  - nmea-msgs
+  - geometry-msgs
+  - nmea-navsat-driver
+  - rosserial-server
+  - imu-filter-madgwick
+  - rosserial-python
+  - gmapping
+
+patch_dir: patch
